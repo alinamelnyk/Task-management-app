@@ -16,6 +16,7 @@
             <input class="btn-primary" type="submit" value="add">
         </form>
         <span>{{remaining()}} of {{todos.length}} remaining</span>
+        <p><a href="#" ng-click="archive()">Remove Completed Items</a></p>
         <ul>
             <li ng-repeat="todo in todos track by $index">
                 <input type="checkbox" ng-model="todo.done">
