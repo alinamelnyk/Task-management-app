@@ -1,4 +1,4 @@
-var todoApp = angular.module('todoApp', []);
+var todoApp = angular.module('todoApp', ['xeditable']);
 todoApp.controller('TodoController', ['$scope', function($scope) {
     $scope.appTitle = "Simple task management app";
     $scope.todos = [
@@ -36,3 +36,12 @@ todoApp.controller('TodoController', ['$scope', function($scope) {
         );
     };
 }]);
+todoApp.run(function(editableOptions) {
+    editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+});
+todoApp.controller('Ctrl', function($scope) {
+    $scope.user = {
+        name: $scope.todoName,
+        description: $scope.todoDescription
+    };
+});
