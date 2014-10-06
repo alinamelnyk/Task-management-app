@@ -29,4 +29,10 @@ todoApp.controller('TodoController', ['$scope', function($scope) {
                 $scope.todos.push(todo);
         });
     };
+    $scope.removeTodo = function(todo) {
+        $scope.todos.splice(
+            $scope.todos.indexOf(todo),
+            1
+        );
+    };
 }]);
