@@ -2,11 +2,25 @@
 <html ng-app="todoApp">
 <head>
     <script src="../static/js/vendor/angular.min.js" type="text/javascript"></script>
+    <script src="../static/js/todo.js"></script>
 </head>
 <body>
     <section ng-controller="TodoController">
         <header class="app-header">
+            <h1 class="app-title">{{ appTitle }}</h1>
         </header>
+        <form ng-submit="addTodo()">
+            <input type="text" ng-model="todoName"  size="30" placeholder="Task #{{todos.length + 1}}" required>
+            <input type="text" ng-model="todoDescription"  size="30" placeholder="Task description" required>
+            <input class="btn-primary" type="submit" value="add">
+        </form>
+        <ul>
+            <li ng-repeat="todo in todos track by $index">
+                <input type="checkbox" ng-model="todo.done">
+                <span class="done-{{ todo.done }}">{{ todo.name }}</span>
+                <span class="done-{{ todo.done }}">{{ todo.description }}</span>
+            </li>
+        </ul>
     </section>
 </body>
 </html>
