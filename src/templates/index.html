@@ -2,6 +2,7 @@
 <html ng-app="todoApp">
 <head>
     <script src="../static/js/vendor/angular.min.js" type="text/javascript"></script>
+    <script src="../static/js/vendor/jquery-1.11.1.min.js"></script>
     <script src="../static/js/vendor/bootstrap.js"></script>
     <script src="../static/js/vendor/ripples.min.js"></script>
     <script src="../static/js/vendor/material.min.js"></script>
@@ -12,29 +13,36 @@
     <link rel="stylesheet" type="text/css" href="../static/css/style.css"/>
 </head>
 <body>
-    <section ng-controller="TodoController">
-        <header class="app-header">
-            <h1 class="app-title">{{ appTitle }}</h1>
-        </header>
-        <form ng-submit="addTodo()" class="form form-inline">
-            <input type="text" ng-model="todoName" class="form-control" size="30" placeholder="Task #{{todos.length + 1}}" required>
-            <input type="text" ng-model="todoDescription" class="form-control" size="30" placeholder="Task description" required>
-            <input class="btn btn-primary" type="submit" value="add">
-        </form>
-        <span>{{remaining()}} of {{todos.length}} remaining</span>
-        <p><a href="#" ng-click="archive()">Remove Completed Items</a></p>
-        <ul>
-            <li ng-repeat="todo in todos track by $index">
-                <input type="checkbox" ng-model="todo.done">
-                <div ng-controller="Ctrl">
-                    <a href="#" editable-text="todo.name" class="done-{{ todo.done }}">{{ todo.name }}</a>
-                </div>
-                <div ng-controller="Ctrl">
-                    <a href="#" editable-text="todo.description" class="done-{{ todo.done }}">{{ todo.description }}</a>
-                </div>
-                <a href="#" ng-click="removeTodo(todo)"><span class="glyphicon glyphicon-remove"></span></a>
-            </li>
-        </ul>
+    <section class="container">
+        <section class="row">
+            <section class="col-md-12 text-center" ng-controller="TodoController">
+                <header class="app-header">
+                    <h1 class="app-title">{{ appTitle }}</h1>
+                </header>
+                <form ng-submit="addTodo()" class="form form-inline">
+                    <input type="text" ng-model="todoName" class="form-control" size="30" placeholder="Task #{{todos.length + 1}}" required>
+                    <input type="text" ng-model="todoDescription" class="form-control" size="30" placeholder="Task description" required>
+                    <input class="btn btn-primary" type="submit" value="add">
+                </form>
+                <span>{{remaining()}} of {{todos.length}} remaining</span>
+                <p><a href="#" ng-click="archive()">Remove Completed Items</a></p>
+                <ul class="list-inline">
+                    <li ng-repeat="todo in todos track by $index">
+                        <input type="checkbox" ng-model="todo.done">
+                        <div ng-controller="Ctrl">
+                            <a href="#" editable-text="todo.name" class="done-{{ todo.done }}">{{ todo.name }}</a>
+                        </div>
+                        <div ng-controller="Ctrl">
+                            <a href="#" editable-text="todo.description" class="done-{{ todo.done }}">{{ todo.description }}</a>
+                        </div>
+                        <div class="done-{{ todo.done }}">
+                            {{todo.date | date:'yyyy-MM-dd HH:mm:ss'}}
+                        </div>
+                        <a href="#" ng-click="removeTodo(todo)"><span class="glyphicon glyphicon-remove"></span></a>
+                    </li>
+                </ul>
+            </section>
+        </section>
     </section>
 </body>
 </html>

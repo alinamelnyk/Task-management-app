@@ -11,6 +11,7 @@ todoApp.controller('TodoController', ['$scope', 'localStorageService', function(
         $scope.todos.push({
             name: $scope.todoName,
             description: $scope.todoDescription,
+            date: new Date(),
             done: false
         });
         $scope.todoName = '';
