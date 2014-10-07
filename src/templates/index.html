@@ -16,10 +16,10 @@
         <header class="app-header">
             <h1 class="app-title">{{ appTitle }}</h1>
         </header>
-        <form ng-submit="addTodo()">
-            <input type="text" ng-model="todoName"  size="30" placeholder="Task #{{todos.length + 1}}" required>
-            <input type="text" ng-model="todoDescription"  size="30" placeholder="Task description" required>
-            <input class="btn-primary" type="submit" value="add">
+        <form ng-submit="addTodo()" class="form form-inline">
+            <input type="text" ng-model="todoName" class="form-control" size="30" placeholder="Task #{{todos.length + 1}}" required>
+            <input type="text" ng-model="todoDescription" class="form-control" size="30" placeholder="Task description" required>
+            <input class="btn btn-primary" type="submit" value="add">
         </form>
         <span>{{remaining()}} of {{todos.length}} remaining</span>
         <p><a href="#" ng-click="archive()">Remove Completed Items</a></p>
