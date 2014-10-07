@@ -3,6 +3,8 @@
 <head>
     <script src="../static/js/vendor/angular.min.js" type="text/javascript"></script>
     <script src="../static/js/vendor/bootstrap.js"></script>
+    <script src="../static/js/vendor/ripples.min.js"></script>
+    <script src="../static/js/vendor/material.min.js"></script>
     <script src="../static/js/vendor/common-local-storage.js"></script>
     <script src="../static/js/vendor/angular-local-storage.js"></script>
     <script src="../static/js/vendor/xeditable.min.js"></script>
@@ -30,7 +32,7 @@
                 <div ng-controller="Ctrl">
                     <a href="#" editable-text="todo.description" class="done-{{ todo.done }}">{{ todo.description }}</a>
                 </div>
-                <a href="#" ng-click="removeTodo(todo)">X</a>
+                <a href="#" ng-click="removeTodo(todo)"><span class="glyphicon glyphicon-remove"></span></a>
             </li>
         </ul>
     </section>
