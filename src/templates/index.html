@@ -26,8 +26,14 @@
                 </form>
                 <span>{{remaining()}} of {{todos.length}} remaining</span>
                 <p><a href="#" ng-click="archive()">Remove Completed Items</a></p>
+                <span>Show</span>
+                <select ng-model="done">
+                    <option value="" selected>All</option>
+                    <option value="false">Current</option>
+                    <option value="true">Completed</option>
+                </select>
                 <ul class="list-inline">
-                    <li ng-repeat="todo in todos track by $index">
+                    <li ng-repeat="todo in todos | filter: done">
                         <input type="checkbox" ng-model="todo.done">
                         <div ng-controller="Ctrl">
                             <a href="#" editable-text="todo.name" class="done-{{ todo.done }}">{{ todo.name }}</a>
