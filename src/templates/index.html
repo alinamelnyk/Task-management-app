@@ -19,19 +19,29 @@
                 <header class="app-header">
                     <h1 class="app-title">{{ appTitle }}</h1>
                 </header>
-                <form ng-submit="addTodo()" class="form form-inline">
+                <form ng-submit="addTodo()" class="form form-inline add-form">
                     <input type="text" ng-model="todoName" class="form-control" size="30" placeholder="Task #{{todos.length + 1}}" required>
                     <input type="text" ng-model="todoDescription" class="form-control" size="30" placeholder="Task description" required>
                     <input class="btn btn-primary" type="submit" value="add">
                 </form>
-                <span>{{remaining()}} of {{todos.length}} remaining</span>
-                <p><a href="#" ng-click="archive()">Remove Completed Items</a></p>
-                <span>Show</span>
-                <select ng-model="done">
-                    <option value="" selected>All</option>
-                    <option value="false">Current</option>
-                    <option value="true">Completed</option>
-                </select>
+                <section class="row">
+                    <section class="col-md-2 col-md-offset-2 col-sm-3 col-xs-6">
+                        <span>{{remaining()}} of {{todos.length}} left</span>
+                    </section>
+                    <section class="col-md-3 col-sm-4 col-xs-6">
+                        <a href="#" ng-click="archive()">Remove Completed Items</a>
+                    </section>
+                    <section class="col-md-1 col-sm-3 col-xs-6 text-right">
+                        Show
+                    </section>
+                    <section class="col-md-2 col-sm-2 col-xs-6">
+                        <select ng-model="done" class="form-control">
+                            <option value="" selected>All</option>
+                            <option value="false">Current</option>
+                            <option value="true">Completed</option>
+                        </select>
+                    </section>
+                </section>
                 <ul class="list-inline todo-list row">
                     <li ng-repeat="todo in todos | filter: done" class="col-md-3 col-sm-4 col-xs-6">
                         <div class="done-{{ todo.done }}">
