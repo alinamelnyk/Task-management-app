@@ -2,8 +2,11 @@
 @import "vendor/bootstrap";
 @import "vendor/material";
 @import "vendor/xeditable";
+@import "vendor/bourbon/bourbon";
+
+//mixins
+@import "mixins/positioning";
 
 //partials
 @import "partials/main";
-@import "partials/manage";
 @import "partials/todos";
