@@ -32,19 +32,23 @@
                     <option value="false">Current</option>
                     <option value="true">Completed</option>
                 </select>
-                <ul class="list-inline">
-                    <li ng-repeat="todo in todos | filter: done">
-                        <input type="checkbox" ng-model="todo.done">
-                        <div ng-controller="Ctrl">
-                            <a href="#" editable-text="todo.name" class="done-{{ todo.done }}">{{ todo.name }}</a>
+                <ul class="list-inline todo-list row">
+                    <li ng-repeat="todo in todos | filter: done" class="col-md-3 col-sm-4 col-xs-6">
+                        <div>
+                            <input type="checkbox" ng-model="todo.done" class="todoStatus">
+                            <div ng-controller="Ctrl">
+                                <a href="#" editable-text="todo.name" class="done-{{ todo.done }} todoTitle">{{ todo.name }}</a>
+                            </div>
+                            <div ng-controller="Ctrl">
+                                <a href="#" editable-text="todo.description" class="done-{{ todo.done }} todoDescription">{{ todo.description }}</a>
+                            </div>
+                            <div class="done-{{ todo.done }} datetime">
+                                {{todo.date | date:'yyyy-MM-dd HH:mm:ss'}}
+                            </div>
+                            <a href="#" ng-click="removeTodo(todo)" class="removeTodo">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </a>
                         </div>
-                        <div ng-controller="Ctrl">
-                            <a href="#" editable-text="todo.description" class="done-{{ todo.done }}">{{ todo.description }}</a>
-                        </div>
-                        <div class="done-{{ todo.done }}">
-                            {{todo.date | date:'yyyy-MM-dd HH:mm:ss'}}
-                        </div>
-                        <a href="#" ng-click="removeTodo(todo)"><span class="glyphicon glyphicon-remove"></span></a>
                     </li>
                 </ul>
             </section>
