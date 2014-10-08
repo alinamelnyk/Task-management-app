@@ -1,0 +1,11 @@
+//The next mixin centers content vertically. Include it for the parent of centered element.
+//The parameter is child content you want to center.
+//Note: the parent should have static height, otherwise the centering won't work
+@mixin center-vertically($centeredChild) {
+  @include css3prefix(transform-style, preserve-3d);
+    #{$centeredChild} {
+      position: relative;
+      top: 50%;
+      @include css3prefix(transform, translateY(-50%));
+    }
+}
