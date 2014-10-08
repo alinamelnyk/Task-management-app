@@ -6,51 +6,35 @@ ul.todo-list {
       height: 200px;
       width: 200px;
       position: relative;
-      background: #fcf76c; /* Old browsers */
-      background: -moz-linear-gradient(top,  #FDEC70 0%, #fcf59b 100%); /* FF3.6+ */
-      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FDEC70), color-stop(100%,#fcf59b)); /* Chrome,Safari4+ */
-      background: -webkit-linear-gradient(top,  #FDEC70 0%,#fcf59b 100%); /* Chrome10+,Safari5.1+ */
-      background: -o-linear-gradient(top,  #FDEC70 0%,#fcf59b 100%); /* Opera 11.10+ */
-      background: -ms-linear-gradient(top,  #FDEC70 0%,#fcf59b 100%); /* IE10+ */
-      background: linear-gradient(to bottom,  #FDEC70 0%,#fcf59b 100%); /* W3C */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FDEC70', endColorstr='#fcf59b',GradientType=0 ); /* IE6-9 */
+      @include linear-gradient(to top, #FDEC70, #fcf59b, $fallback:#fcf76c);
       border: 1px solid #DADADA;
-      /* -webkit-transform: rotate(-1deg); */
-      &:before {
+      &:before, &:after {
         content: '';
         display: block;
         width: 90%;
         height: 20%;
         position: absolute;
-        left: 10px;
-        bottom: 3px;
         background-color: rgba(0, 0, 0, .9);
-        -o-transform: rotate(-3deg);
-        -webkit-transform: rotate(-3deg);
-        -moz-transform: rotate(-3deg);
-        -webkit-box-shadow: 0 0 10px #000;
-        -moz-box-shadow: 0 0 10px #000;
-        box-shadow: 0 0 10px #000;
+        @include prefixer (box-shadow, 0 0 10px #000);
         opacity: 1;
         z-index: -1;
       }
+      &:before {
+        left: 10px;
+        bottom: 3px;
+        @include transform(rotate(-3deg));
+      }
       &:after {
-        content: '';
-        display: block;
-        width: 90%;
-        height: 20%;
-        position: absolute;
         right: 10px;
         bottom: 3px;
-        background-color: rgba(0, 0, 0, .9);
-        -o-transform: rotate(3deg);
-        -webkit-transform: rotate(3deg);
-        -moz-transform: rotate(3deg);
-        box-shadow: 0 0 10px #000;
-        -webkit-box-shadow: 0 0 10px #000;
-        -moz-box-shadow: 0 0 10px #000;
-        opacity: 1;
-        z-index: -1;
+        @include transform(rotate(3deg));
+      }
+      &.done-true {
+        @include linear-gradient(to top, #f4f4f4, #fcfcfc, $fallback:#f4f4f4);
+        div, a {
+          text-decoration: line-through;
+          color: grey;
+        }
       }
     }
   }
