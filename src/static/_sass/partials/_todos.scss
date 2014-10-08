@@ -15,7 +15,7 @@ ul.todo-list {
         height: 20%;
         position: absolute;
         background-color: rgba(0, 0, 0, .9);
-        @include prefixer (box-shadow, 0 0 10px #000);
+        @include prefixer(box-shadow, 0 0 10px #000, moz webkit o ms spec);
         opacity: 1;
         z-index: -1;
       }
@@ -34,6 +34,24 @@ ul.todo-list {
         div, a {
           text-decoration: line-through;
           color: grey;
+        }
+      }
+      .editable-click, a.editable-click {
+        border: none;
+      }
+      &:hover {
+        .todoTitle, .todoDescription {
+          ~ .glyphicon {
+            display: inline;
+          }
+        }
+        .editable-wrap {
+          ~ .glyphicon {
+            display: none;
+          }
+        }
+        .editable-click, a.editable-click {
+          border-bottom: 1px dashed #666;
         }
       }
     }
@@ -65,5 +83,10 @@ ul.todo-list {
   }
   .todoDescription {
     color: #666;
+  }
+  .todoTitle, .todoDescription {
+    ~ .glyphicon {
+      display: none;
+    }
   }
 }

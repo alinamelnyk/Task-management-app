@@ -34,15 +34,17 @@
                 </select>
                 <ul class="list-inline todo-list row">
                     <li ng-repeat="todo in todos | filter: done" class="col-md-3 col-sm-4 col-xs-6">
-                        <div>
+                        <div class="done-{{ todo.done }}">
                             <input type="checkbox" ng-model="todo.done" class="todoStatus">
                             <div ng-controller="Ctrl">
-                                <a href="#" editable-text="todo.name" class="done-{{ todo.done }} todoTitle">{{ todo.name }}</a>
+                                <a href="#" editable-text="todo.name" class="todoTitle">{{ todo.name }}</a>
+                                <span class="glyphicon glyphicon-pencil"></span>
                             </div>
                             <div ng-controller="Ctrl">
-                                <a href="#" editable-text="todo.description" class="done-{{ todo.done }} todoDescription">{{ todo.description }}</a>
+                                <a href="#" editable-text="todo.description" class="todoDescription">{{ todo.description }}</a>
+                                <span class="glyphicon glyphicon-pencil"></span>
                             </div>
-                            <div class="done-{{ todo.done }} datetime">
+                            <div class="datetime">
                                 {{todo.date | date:'yyyy-MM-dd HH:mm:ss'}}
                             </div>
                             <a href="#" ng-click="removeTodo(todo)" class="removeTodo">
