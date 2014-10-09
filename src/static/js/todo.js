@@ -1,10 +1,9 @@
 var todoApp = angular.module('todoApp', ['xeditable','LocalStorageModule']);
 todoApp.controller('TodoController', ['$scope', 'localStorageService', function($scope, localStorageService) {
-    $scope.appTitle = "Simple task management app";
     $scope.saved = localStorageService.get('todos');
     $scope.todos = (localStorageService.get('todos')!==null) ? fromJson($scope.saved) : [
         {name: 'Task1', description: 'Description for task1', done: false},
-        {name: 'Task2', description: 'Description for task2', done: false}
+        {name: 'Task2', description: 'Description for task2', done: true}
     ];
 
     $scope.addTodo = function() {

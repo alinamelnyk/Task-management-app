@@ -85,6 +85,8 @@ ul.todo-list {
     color: #666;
   }
   .todoTitle, .todoDescription {
+    overflow: hidden;
+    text-overflow: ellipsis;
     ~ .glyphicon {
       display: none;
     }
@@ -92,4 +94,7 @@ ul.todo-list {
 }
 .add-form {
   margin-bottom: 30px;
+}
+.editable-wrap {
+  white-space: normal;
 }

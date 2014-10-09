@@ -1,24 +1,15 @@
 <!doctype html>
 <html ng-app="todoApp">
 <head>
-    <script src="../static/js/vendor/angular.min.js" type="text/javascript"></script>
-    <script src="../static/js/vendor/jquery-1.11.1.min.js"></script>
-    <script src="../static/js/vendor/bootstrap.js"></script>
-    <script src="../static/js/vendor/ripples.min.js"></script>
-    <script src="../static/js/vendor/material.min.js"></script>
-    <script src="../static/js/vendor/common-local-storage.js"></script>
-    <script src="../static/js/vendor/angular-local-storage.js"></script>
-    <script src="../static/js/vendor/xeditable.min.js"></script>
-    <script src="../static/js/todo.js"></script>
     <link rel="stylesheet" type="text/css" href="../static/css/style.css"/>
 </head>
 <body>
     <section class="container">
         <section class="row">
-            <section class="col-md-12 text-center" ng-controller="TodoController">
-                <header class="app-header">
+            <section class="col-md-12 text-center" data-handlebar="main" ng-controller="TodoController">
+                <script id="header" type="text/x-handlebars-template">
                     <h1 class="app-title">{{ appTitle }}</h1>
-                </header>
+                </script>
                 <form ng-submit="addTodo()" class="form form-inline add-form">
                     <input type="text" ng-model="todoName" class="form-control" size="30" placeholder="Task #{{todos.length + 1}}" required>
                     <input type="text" ng-model="todoDescription" class="form-control" size="30" placeholder="Task description" required>
@@ -28,19 +19,25 @@
                     <section class="col-md-2 col-md-offset-2 col-sm-3 col-xs-6">
                         <span>{{remaining()}} of {{todos.length}} left</span>
                     </section>
-                    <section class="col-md-3 col-sm-4 col-xs-6">
-                        <a href="#" ng-click="archive()">Remove Completed Items</a>
+                    <section class="col-md-3 col-sm-4 col-xs-6" data-handlebar="archive">
+                        <script id="archive" type="text/x-handlebars-template">
+                            <a href="#" ng-click="archive()">{{ removeText }}</a>
+                        </script>
                     </section>
-                    <section class="col-md-1 col-sm-3 col-xs-6 text-right">
-                        Show
-                    </section>
-                    <section class="col-md-2 col-sm-2 col-xs-6">
-                        <select ng-model="done" class="form-control">
-                            <option value="" selected>All</option>
-                            <option value="false">Current</option>
-                            <option value="true">Completed</option>
-                        </select>
-                    </section>
+                    <script id="filtering" type="text/x-handlebars-template">
+                         <section class="col-md-1 col-sm-3 col-xs-6 text-right">
+                             {{ showWord }}
+                         </section>
+                         <section class="col-md-2 col-sm-2 col-xs-6">
+                             {{#dataFiltering}}
+                             <select ng-model="done" class="form-control">
+                                 <option value="" selected>{{ showAll }}</option>
+                                 <option value="false">{{ showCurrent }}</option>
+                                 <option value="true">{{ showDone }}</option>
+                             </select>
+                             {{/dataFiltering}}
+                        </section>
+                    </script>
                 </section>
                 <ul class="list-inline todo-list row">
                     <li ng-repeat="todo in todos | filter: done" class="col-md-3 col-sm-4 col-xs-6">
@@ -66,5 +63,17 @@
             </section>
         </section>
     </section>
+    <!--Scripts-->
+    <script src="../static/js/vendor/angular.min.js" type="text/javascript"></script>
+    <script src="../static/js/vendor/jquery-1.11.1.min.js"></script>
+    <script src="../static/js/vendor/bootstrap.js"></script>
+    <script src="../static/js/vendor/ripples.min.js"></script>
+    <script src="../static/js/vendor/material.min.js"></script>
+    <script src="../static/js/vendor/common-local-storage.js"></script>
+    <script src="../static/js/vendor/angular-local-storage.js"></script>
+    <script src="../static/js/vendor/xeditable.min.js"></script>
+    <script src="../static/js/todo.js"></script>
+    <script src="../static/js/vendor/handlebars-v2.0.0.js"></script>
+    <script src="../static/js/handlebars-data.js"></script>
 </body>
 </html>
