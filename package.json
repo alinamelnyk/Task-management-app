@@ -1,0 +1,27 @@
+{
+  "name": "Task-management-app",
+  "version": "1.0.0",
+  "description": "Simple HTML5 app for tasks managing",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alinamelnyk/Task-management-app.git"
+  },
+  "keywords": [
+    "HTML5",
+    "app",
+    "Angularjs"
+  ],
+  "author": "Alina Melnyk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alinamelnyk/Task-management-app/issues"
+  },
+  "homepage": "https://github.com/alinamelnyk/Task-management-app",
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
+}
